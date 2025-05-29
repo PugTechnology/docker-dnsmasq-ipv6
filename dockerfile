@@ -1,10 +1,14 @@
+# Dockerfile
 FROM alpine:latest
 
-RUN apk --no-cache add dnsmasq
+# install dnsmasq
+RUN apk add --no-cache dnsmasq
 
+# copy your IPv6-only config in
 COPY dnsmasq.conf /etc/dnsmasq.conf
 
-EXPOSE 53/udp
-EXPOSE 53/tcp
+# expose DNS ports
+EXPOSE 53/udp 53/tcp
 
-ENTRYPOINT ["dnsmasq", "-k"]
+# run in foreground
+ENTRYPOINT ["dnsmasq", "-k", "--conf-file=/etc/dnsmasq.conf"]
