@@ -39,33 +39,6 @@ docker run -d --name dnsmasq-ipv6 \
 
 ---
 
-## Configuration
-
-**dnsmasq.conf** (key options shown):
-
-```ini
-# Listen on IPv6 only
-interface=eth0
-listen-address=::1, [YOUR_IPV6_IF_NEEDED]
-
-# Disable IPv4
-no-dhcp-interface=eth0
-bind-interfaces
-no-resolv
-
-# Upstream IPv6 DNS servers
-server=2620:119:35::35
-server=2620:119:53::53
-
-# Block IPv4 lookups
-address=/#/::
-```
-
-* Replace `[YOUR_IPV6_IF_NEEDED]` with the container's IPv6 address if needed.
-* Edit upstream servers as desired.
-
----
-
 ## Docker Compose Example
 
 ```yaml

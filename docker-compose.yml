@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  dnsmasq-ipv6:
+    image: alpine:latest
+    container_name: dnsmasq-ipv6
+    command:
+      - dnsmasq
+      - -k
+      - --conf-file=/etc/dnsmasq.conf
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf:ro
+    network_mode: "host"
+    restart: unless-stopped
